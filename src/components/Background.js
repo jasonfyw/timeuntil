@@ -13,7 +13,7 @@ class Background extends Component {
 
 
     selectVideo = () => {
-        console.log('triggered');
+        // Selects a random video depending on the time of day
         let time = new Date().getHours();
         let dayVideos = [video_la1, video_sf1, video_hk1];
         let selectedVideoSource = time > 22 || time < 5 ? video_koreajapan : dayVideos[Math.floor(Math.random() * dayVideos.length)];
@@ -37,7 +37,6 @@ class Background extends Component {
 
     render() {
         let videoClass = this.props.videoClass;
-
         let videoSource = this.state.videoSource;
 
         return (

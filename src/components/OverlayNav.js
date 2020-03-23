@@ -16,6 +16,7 @@ class OverlayNav extends Component {
 
         const countdownComponents = [];
         
+        // Parses each date entry and creates a new countdown instance
         Object.keys(dates).forEach(date => {
             let countdownInstance = <Countdown date={date} label={dates[date]}></Countdown>
             countdownComponents.push(
@@ -30,6 +31,7 @@ class OverlayNav extends Component {
         return (
             <div id="overlay-nav" className={overlayClass}>
                 <div className="overlay-header">
+                    {/* eslint-disable-next-line */}
                     <a href="javascript:void(0)" onClick={this.handleClose}>Close</a>
                 </div>
                 <div className="overlay-content">

@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-import Countdown from './components/Countdown';
 import Background from './components/Background';
 import Clock from './components/Clock';
 import OverlayNav from './components/OverlayNav';
@@ -61,6 +60,7 @@ class App extends Component {
                     selectCountdown={this.selectCountdown}
                 />
 
+                {/* eslint-disable-next-line */}
                 <a href="javascript:void(0)" onClick={this.showOverlay} className="overlay-open">Click me!</a>
 
             </div>
