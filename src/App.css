@@ -1,0 +1,69 @@
+html, p, a {
+    font-family: 'Bungee Hairline', cursive;  
+}
+
+.app {
+    position: relative;
+    height: 100vh;
+}
+
+/* 
+    Main clock or countdown display
+*/
+.main-display {
+    width: 100%;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 4vh;
+
+    color: white;
+}
+
+.main-display .clock {
+    padding-left: 2vh;
+    margin-left: 5vh;
+}
+.main-display .countdown {
+    width: 100%;
+}
+.main-display .countdown .label {
+    text-align: center;
+    padding-top: 2rem;
+    /* padding-left: 2rem; */
+    font-size: 1.5rem;
+}
+.main-display .countdown .interval {
+    font-size: 3.75rem;
+    font-weight: 600;
+}
+.main-display .countdown .interval-label {
+    font-size: 1.5rem;
+    font-weight: 400;
+}
+
+/* 
+    Open menu button
+*/
+.overlay-open {
+    position: absolute;
+    height: 2rem;
+    right: 2vh;
+    bottom: 40vh;
+
+    color: white;
+    text-align: center;
+    font-weight: 600;
+    font-size: 1.25rem;
+    font-family: 'Bungee Hairline', cursive; 
+    text-decoration: none;
+    transition: 0.3s;
+    transform: rotate(90deg); 
+    transform-origin: top right;
+}
+.overlay-open:hover {
+    font-size: 1.5rem;
+    color: white;
+    text-decoration: none;
+    font-weight: 900;
+}

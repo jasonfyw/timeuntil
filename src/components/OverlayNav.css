@@ -1,0 +1,78 @@
+#overlay-nav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1000;
+    right: 0;
+    top: 0;
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.9);
+    overflow-x: hidden;
+    transition: 0.5s;
+}
+
+.overlay-header {
+    width: 100%;
+    border-bottom: 1px solid #818181;
+}
+#overlay-nav a {
+    padding: 1rem;
+
+    text-decoration: none;
+    font-size: 1.25rem;
+    color: #818181;
+    font-weight: 900;
+    text-align: center;
+    display: block; /* Display block instead of inline */
+    transition: 0.3s; /* Transition effects on hover (color) */
+}
+#overlay-nav a:hover {
+    font-size: 1.5rem;
+}
+
+.show-overlay {
+    width: 100% !important;
+}
+.hide-overlay {
+    width: 0% !important;
+}
+
+.overlay-clock-wrapper {
+    margin-top: 0;
+    padding-top: 0;
+    /* margin-right: 10rem;
+    margin-left: 10rem; */
+    padding-bottom: 2rem;
+    border-bottom: 1px solid #818181;  
+}
+.overlay-content {
+    margin-bottom: 5rem;
+}
+.overlay-content .clock {
+    text-align: center;
+    color: #fff;
+    width: 60%;
+    margin-top: 2rem;
+    cursor: pointer;
+}
+.overlay-content .clock .time {
+    font-size: 3rem;
+    font-weight: 600;
+}
+.overlay-content .clock .date {
+    font-size: 1.5rem;
+    font-weight: 300;
+}
+.overlay-content .countdown {
+    font-size: 1.5rem;
+    color: #fff;
+    width: 60%;
+    margin-top: 2.5rem;
+    cursor: pointer;
+
+}
+.overlay-content .countdown .interval-label {
+    font-size: 0.7rem;
+    color: #fff;
+
+}

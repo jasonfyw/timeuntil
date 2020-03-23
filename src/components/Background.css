@@ -1,0 +1,9 @@
+video {
+    position: fixed;
+    min-height: 100%;
+    width: 177.777778vh;
+    min-width: 100%;
+    right: 0;
+    left: 0;
+    bottom:0;
+}

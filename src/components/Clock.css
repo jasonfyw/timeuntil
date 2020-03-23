@@ -1,0 +1,17 @@
+.clock {
+    text-align: left;
+    /* font-family: 'Bungee Shade', cursive; */
+    font-family: 'Bungee Hairline', cursive;    
+}
+
+.time {
+    font-size: 5rem;
+    font-weight: 600;
+
+}
+
+.date {
+    font-size: 2rem;
+    font-weight: 300;
+}
+
