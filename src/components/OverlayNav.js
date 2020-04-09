@@ -17,10 +17,12 @@ class OverlayNav extends Component {
         const countdownComponents = [];
         
         // Parses each date entry and creates a new countdown instance
+        // ! PROBABLY BROKEN FOR DUPLICATE DATES
+
         Object.keys(dates).forEach(date => {
             let countdownInstance = <Countdown date={date} label={dates[date]}></Countdown>
             countdownComponents.push(
-                <div className="overlay-countdown-wrapper" onClick={(e) => this.props.selectCountdown(countdownInstance, e)}>
+                <div className="overlay-countdown-wrapper" onClick={(e) => this.props.selectCountdown([date, dates[date]], e)}>
                     {countdownInstance}
                 </div>
             );
@@ -35,7 +37,7 @@ class OverlayNav extends Component {
                     <a href="javascript:void(0)" onClick={this.handleClose}>Close</a>
                 </div>
                 <div className="overlay-content">
-                    <div className="overlay-clock-wrapper" onClick={(e) => this.props.selectCountdown(<Clock/>, e)}>
+                    <div className="overlay-clock-wrapper" onClick={(e) => this.props.selectCountdown('clock', e)}>
                         <Clock/>
                     </div>
                     {countdownComponents}

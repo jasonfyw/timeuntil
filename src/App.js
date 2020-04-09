@@ -1,15 +1,17 @@
 import React, { Component } from 'react';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { withCookies } from 'react-cookie';
 
 import Background from './components/Background';
 import Clock from './components/Clock';
+import Countdown from './components/Countdown';
 import OverlayNav from './components/OverlayNav';
 
 class App extends Component {
     state = {
         showOverlay: false,
-        mainDisplay: <Clock></Clock>,
+        mainDisplay: '',
         dates: {
             "25 December 2020": "Christmas 2020",
             "1 January 2021": "New Year"
@@ -23,16 +25,27 @@ class App extends Component {
         this.setState({showOverlay: false});
     }
 
-    selectCountdown = (countdownInstance, e) => {
-        this.setState({mainDisplay: countdownInstance});
-        // localStorage.setItem('mainDisplay', JSON.stringify(countdownInstance));
-        // this.setState({ mainDisplay: JSON.parse(localStorage.getItem('mainDisplay'))});
+    generateComponent = (componentData) => {
+        if (!Array.isArray(componentData)) {
+            return <Clock/>
+        } else {
+            return <Countdown date={componentData[0]} label={componentData[1]} />
+        }
+    }
+
+    selectCountdown = (mainDisplayData, e) => {
+        const { cookies } = this.props;
+        cookies.set('mainDisplayData', mainDisplayData, { path: '/' })
+        this.setState({mainDisplay: this.generateComponent(mainDisplayData) });
 
         this.hideOverlay();
     }
-    // componentDidMount() {
-    //     this.setState({mainDisplay: JSON.parse(localStorage.getItem('mainDisplay'))});
-    // }
+
+    componentDidMount() {
+        const { cookies } = this.props;
+        let mainDisplayData = cookies.get('mainDisplayData')
+        this.setState({ mainDisplay: this.generateComponent(mainDisplayData) })
+    }
 
 
 
@@ -68,4 +81,4 @@ class App extends Component {
     }
 }
 
-export default App;
+export default withCookies(App);
