@@ -12,10 +12,10 @@ class App extends Component {
     state = {
         showOverlay: false,
         mainDisplay: '',
-        dates: {
-            "25 December 2020": "Christmas 2020",
-            "1 January 2021": "New Year"
-        }
+        dates: [
+            ["25 December 2020", "Christmas 2020"],
+            ["1 January 2021", "New Year"]
+        ]
     }
 
     showOverlay = () => {
@@ -44,10 +44,10 @@ class App extends Component {
         const monthNames = ["January", "February", "March", "April", "May", "June",
             "July", "August", "September", "October", "November", "December"
         ];
-
+        
         let d = new Date(date)
         d = `${d.getDate()} ${monthNames[d.getMonth()]} ${d.getFullYear()}`
-        let dates = {...this.state.dates, [d]: label}
+        let dates = [...this.state.dates, [d, label]]
         this.setState({ dates: dates });
     }
 

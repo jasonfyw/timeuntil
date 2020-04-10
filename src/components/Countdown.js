@@ -2,10 +2,10 @@ import React, { useEffect, useState } from 'react';
 import './Countdown.css';
 import { Container, Row, Col } from 'react-bootstrap';
 
-const Countdown = ({ date, label }) => {
+const Countdown = ( props ) => {
 
     const calculateTimeLeft = () => {
-        const diff = new Date(date) - new Date();
+        const diff = new Date(props.date) - new Date();
         let timeLeft = {}
 
         if (diff > 0) {
@@ -62,8 +62,8 @@ const Countdown = ({ date, label }) => {
                 {timerComponents.length ? 
                 <React.Fragment>
                     {timerComponents}
-                    <Col md="12"><h4 className="label">until {label}</h4><h4 className="label-date">{date}</h4></Col>
-                </React.Fragment> : <Col><h4 className="passed-countdown">{label} has already passed</h4></Col>}
+                    <Col md="12"><h4 className="label">until {props.label}</h4><h4 className="label-date">{props.date}</h4></Col>
+                </React.Fragment> : <Col><h4 className="passed-countdown">{props.label} has already passed</h4></Col>}
             </Row>
         </Container>
     );
