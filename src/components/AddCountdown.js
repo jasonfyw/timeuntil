@@ -3,6 +3,7 @@ import { Grommet, Box, Form, FormField, TextInput, Button } from 'grommet';
 import { DateInput } from 'grommet-controls';
 
 import './AddCountdown.css';
+import grommetTheme from '../grommetTheme';
 
 class AddCountdown extends Component {
     state = {
@@ -27,10 +28,10 @@ class AddCountdown extends Component {
 
         return (
             // TODO – add 'x time from now' functionality in parallel to datepicker
-            <Grommet>
+            <Grommet theme={grommetTheme}>
                 <div id="addcountdown-overlay" className={this.props.overlayClass}>
                     <Box pad="large" align="center">
-                        <Box pad="medium" alignSelf="center" background="#fff">
+                        <Box pad="medium" alignSelf="center" background="light-4" round="medium">
 
                             <Form
                                 onReset={this.resetInput}
@@ -42,8 +43,9 @@ class AddCountdown extends Component {
                                             name="label"
                                             value={labelValue}
                                             onChange={e => this.setState({ labelValue: e.target.value })}
-                                            placeholder="A meaningful name"
+                                            placeholder="Enter event name"
                                             required
+                                            style={{ "color": "#000" }}
                                         />
                                     </FormField>
                                     <FormField label="Date" name="date">
@@ -52,16 +54,17 @@ class AddCountdown extends Component {
                                             value={dateValue}
                                             onChange={e => {this.setState({ dateValue: e.target.value })}}
                                             placeholder='DD/MM/YYYY'
+                                            size="medium"
                                             required
                                         />
                                     </FormField>
                                 </Box>
 
                                 <Box direction="row" justify="between" margin={{ top: 'medium' }} >
-                                    <Button type="reset" label="Cancel" color="light-1" onClick={() => {
+                                    <Button type="reset" label="Cancel" color="dark-1" onClick={() => {
                                         this.props.hideOverlay();
-                                    }} />
-                                    <Button type="submit" label="Add" color="light-1" primary />
+                                    }} style={{ "fontWeight": 1000}}/>
+                                    <Button type="submit" label="Add" color="dark-1" style={{ "fontWeight": 1000}} primary/>
                                 </Box>
                             </Form>
 
