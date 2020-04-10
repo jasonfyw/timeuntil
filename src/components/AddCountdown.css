@@ -1,0 +1,18 @@
+#addcountdown-overlay {
+    height: 0;
+    width: 100%;
+    position: fixed;
+    z-index: 2;
+    right: 0;
+    bottom: 0;
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.9);
+    overflow-x: hidden;
+    transition: 0.5s;
+}
+.show-addcountdown {
+    height: 30% !important;
+}
+.hide-addcountdown {
+    height: 0 !important;
+}

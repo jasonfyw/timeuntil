@@ -1,18 +1,39 @@
 import React, { Component } from 'react';
+import IosAddCircleOutline from 'react-ionicons/lib/IosAddCircleOutline';
+
 import Countdown from './Countdown';
 import Clock from './Clock';
+import AddCountdown from './AddCountdown';
+
 import './OverlayNav.css';  
 
+
+
 class OverlayNav extends Component {
+    state = {
+        showNewCountdown: false
+    }
 
     handleClose = (e) => {
         e.preventDefault();
         this.props.hideOverlay();
     }
 
+    showCountdown = () => {
+        this.setState({ showNewCountdown: true })
+    }
+    hideNewCountdown = () => {
+        this.setState({ showNewCountdown: false })
+    }
+
+    addCountdown = (date, label) => {
+        this.props.addCountdown(date, label);
+    }
+
     render() {
         let overlayClass = this.props.overlayClass;
         let dates = this.props.countdownDates;
+        let addCountdownOverlayClass = this.state.showNewCountdown ? 'show-addcountdown' : 'hide-addcountdown';
 
         const countdownComponents = [];
         
@@ -41,7 +62,18 @@ class OverlayNav extends Component {
                         <Clock/>
                     </div>
                     {countdownComponents}
+                    <div className="overlay-add-countdown">
+                        <div className="add-countdown-wrapper">
+                            <IosAddCircleOutline fontSize="2rem" color="#fff" onClick={this.showCountdown} />
+                        </div>
+                    </div>
                 </div>
+
+                <AddCountdown 
+                    overlayClass={addCountdownOverlayClass} 
+                    hideOverlay={this.hideNewCountdown}
+                    addCountdown={this.addCountdown}
+                />
             </div>
         );
     }

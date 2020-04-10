@@ -32,13 +32,23 @@ class App extends Component {
             return <Countdown date={componentData[0]} label={componentData[1]} />
         }
     }
-
     selectCountdown = (mainDisplayData, e) => {
         const { cookies } = this.props;
         cookies.set('mainDisplayData', mainDisplayData, { path: '/' })
         this.setState({mainDisplay: this.generateComponent(mainDisplayData) });
 
         this.hideOverlay();
+    }
+
+    addCountdown = (date, label) => {
+        const monthNames = ["January", "February", "March", "April", "May", "June",
+            "July", "August", "September", "October", "November", "December"
+        ];
+
+        let d = new Date(date)
+        d = `${d.getDate()} ${monthNames[d.getMonth()]} ${d.getFullYear()}`
+        let dates = {...this.state.dates, [d]: label}
+        this.setState({ dates: dates });
     }
 
     componentDidMount() {
@@ -71,6 +81,7 @@ class App extends Component {
                     hideOverlay={this.hideOverlay} 
                     countdownDates={this.state.dates}
                     selectCountdown={this.selectCountdown}
+                    addCountdown={this.addCountdown}
                 />
 
                 {/* eslint-disable-next-line */}

@@ -2,7 +2,7 @@
     height: 100%;
     width: 0;
     position: fixed;
-    z-index: 1000;
+    z-index: 1;
     right: 0;
     top: 0;
     background-color: rgb(0, 0, 0);
@@ -10,6 +10,14 @@
     overflow-x: hidden;
     transition: 0.5s;
 }
+.show-overlay {
+    width: 100% !important;
+}
+.hide-overlay {
+    width: 0% !important;
+}
+
+
 
 .overlay-header {
     width: 100%;
@@ -30,12 +38,6 @@
     font-size: 1.5rem;
 }
 
-.show-overlay {
-    width: 100% !important;
-}
-.hide-overlay {
-    width: 0% !important;
-}
 
 .overlay-clock-wrapper {
     margin-top: 0;
@@ -75,4 +77,13 @@
     font-size: 0.7rem;
     color: #fff;
 
+}
+
+
+.overlay-content .overlay-add-countdown {
+    text-align: center;
+    padding-top: 30px;
+}
+.overlay-add-countdown .add-countdown-wrapper :hover {
+    cursor: pointer;
 }
