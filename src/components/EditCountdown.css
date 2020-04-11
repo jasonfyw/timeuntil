@@ -1,0 +1,16 @@
+#editcountdown-overlay {
+    height: 0;
+    width: 100%;
+    position: fixed;
+    z-index: 2;
+    right: 0;
+    bottom: 0;
+    overflow-x: hidden;
+    transition: 0.5s;
+}
+.show-editcountdown {
+    height: 30% !important;
+}
+.hide-editcountdown {
+    height: 0 !important;
+}

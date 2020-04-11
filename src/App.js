@@ -24,6 +24,15 @@ class App extends Component {
     hideOverlay = () => {
         this.setState({showOverlay: false});
     }
+    convertDate = (shortDate) => {
+        const monthNames = ["January", "February", "March", "April", "May", "June",
+            "July", "August", "September", "October", "November", "December"
+        ];
+        let date = new Date(shortDate);
+        date = `${date.getDate()} ${monthNames[date.getMonth()]} ${date.getFullYear()}`;
+
+        return date;
+    }
 
     generateComponent = (componentData) => {
         if (!Array.isArray(componentData)) {
@@ -41,14 +50,18 @@ class App extends Component {
     }
 
     addCountdown = (date, label) => {
-        const monthNames = ["January", "February", "March", "April", "May", "June",
-            "July", "August", "September", "October", "November", "December"
-        ];
-        
-        let d = new Date(date)
-        d = `${d.getDate()} ${monthNames[d.getMonth()]} ${d.getFullYear()}`
-        let dates = [...this.state.dates, [d, label]]
+        let dates = [...this.state.dates, [this.convertDate(date), label]]
         this.setState({ dates: dates });
+    }
+    editCountdown = (index, date, label) => {
+        let dates = this.state.dates;
+        dates[index] = [this.convertDate(date), label];
+        this.setState({ dates: dates })
+    }
+    deleteCountdown = (index) => {
+        let dates = this.state.dates;
+        dates.splice(index, 1);
+        this.setState({ dates: dates })
     }
 
     componentDidMount() {
@@ -82,6 +95,8 @@ class App extends Component {
                     countdownDates={this.state.dates}
                     selectCountdown={this.selectCountdown}
                     addCountdown={this.addCountdown}
+                    editCountdown={this.editCountdown}
+                    deleteCountdown={this.deleteCountdown}
                 />
 
                 {/* eslint-disable-next-line */}
