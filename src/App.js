@@ -33,6 +33,10 @@ class App extends Component {
 
         return date;
     }
+    updateDatesCookie = (dates) => {
+        const { cookies } = this.props;
+        cookies.set('dates', dates, { path: '/' });
+    }
 
     generateComponent = (componentData) => {
         if (!Array.isArray(componentData)) {
@@ -52,22 +56,32 @@ class App extends Component {
     addCountdown = (date, label) => {
         let dates = [...this.state.dates, [this.convertDate(date), label]]
         this.setState({ dates: dates });
+        this.updateDatesCookie(dates);
     }
     editCountdown = (index, date, label) => {
         let dates = this.state.dates;
         dates[index] = [this.convertDate(date), label];
         this.setState({ dates: dates })
+        this.updateDatesCookie(dates);
     }
     deleteCountdown = (index) => {
         let dates = this.state.dates;
         dates.splice(index, 1);
         this.setState({ dates: dates })
+        this.updateDatesCookie(dates);
     }
 
     componentDidMount() {
         const { cookies } = this.props;
         let mainDisplayData = cookies.get('mainDisplayData')
         this.setState({ mainDisplay: this.generateComponent(mainDisplayData) })
+
+        let dates = cookies.get('dates');
+        if (dates) {
+            this.setState({ dates: dates });
+        } else {
+            cookies.set('dates', this.state.dates, { path: '/' });
+        }
     }
 
 
